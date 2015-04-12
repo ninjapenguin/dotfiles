@@ -1,0 +1,33 @@
+[alias]
+	ci = commit
+	st = status
+	co = checkout
+	lol = "log --graph --full-history --all --color --pretty=format:'%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s'"
+	w = whatchanged
+	newb = !sh -c 'git co master && git pull && git co -b $1' -
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[github]
+	token = ba9aecb37b5699266e6cb705a5c6d85f
+	user = ninjapenguin
+[user]
+	name = Matt Wells
+	email = matt.wells@performancehorizon.com
+[push]
+	default = simple
