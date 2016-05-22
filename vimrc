@@ -49,7 +49,9 @@ Plugin 'noprompt/vim-yardoc'
 Plugin 'othree/html5.vim'
 Plugin 'othree/yajs.vim'
 Plugin 'StanAngeloff/php.vim'
+Plugin 'scrooloose/nerdtree'
 
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
@@ -230,3 +232,17 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+" ------------------------------------------------------------------------------
+" NERDTree
+" ------------------------------------------------------------------------------
+
+" Map toggle to crtl+n
+map <C-n> :NERDTreeToggle<CR>
+
+" Open NERDTree by default
+" autocmd vimenter * NERDTree
+
+" Close VIM if NERDTree is only open window
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
