@@ -63,6 +63,7 @@ Plugin 'bling/vim-airline'
 Plugin 'dyng/auto_mkdir'
 
 " Themes
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'chriskempson/base16-vim'
 
@@ -151,7 +152,7 @@ highlight ColorColumn ctermbg=236 guibg=#262D51
 " User Interface
 " ------------------------------------------------------------------------------
 let base16colorspace=256          " Access colors present in 256 colorspace
-colorscheme base16-tomorrow
+colorscheme base16-ocean
 set background=dark
 
 if has('gui_running')
@@ -183,7 +184,9 @@ endif
 set laststatus=2
 
 " Disable status line fill chars.
-set fillchars+=stl:\ ,stlnc:\ " Space.
+"set fillchars+=stl:\ ,stlnc:\ " Space.
+
+let g:airline_powerline_fonts = 1
 
 " ------------------------------------------------------------------------------
 " Rainbow Parenthesis

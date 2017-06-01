@@ -83,9 +83,5 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-
-function hotmaster {INFRA='noss'; if [ $# -eq '1' ]; then INFRA=$1; fi; cat /etc/ansible/production/$INFRA/host_vars/config-1.$INFRA.ld5.phg.io.yml| grep 'mysql_master_rw_host:' | awk '{print $2}'}
-function hotslave {INFRA='noss'; if [ $# -eq '1' ]; then INFRA=$1; fi; cat /etc/ansible/production/$INFRA/host_vars/config-1.$INFRA.ld5.phg.io.yml| grep 'mysql_master_ro_host:' | awk '{print $2}'}
