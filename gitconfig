@@ -5,6 +5,8 @@
 	lol = "log --graph --full-history --all --color --pretty=format:'%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s'"
 	w = whatchanged
 	newb = !sh -c 'git co master && git pull && git co -b $1' -
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 
 [color]
 	diff = auto
@@ -27,9 +29,11 @@
 	token = ba9aecb37b5699266e6cb705a5c6d85f
 	user = ninjapenguin
 [user]
-	name = ninjapenguin
-	email = matt@ninjapenguin.co.uk
+	name = ninjapenguin@github.com
+	email = ninjapenguin@github.com
 [push]
 	default = simple
 [credential]
 	helper = osxkeychain
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
