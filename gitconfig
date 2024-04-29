@@ -37,3 +37,11 @@
 	helper = osxkeychain
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[diff]
+	external = difft
+
+[includeIf "gitdir:~/Code/agentbrain/**"]
+	path = ~/.git-templates/agentbrain/.gitconfig
+
+[includeIf "gitdir:~/Code/munchlet/**"]
+	path = ~/.git-templates/munchlet/.gitconfig

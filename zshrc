@@ -44,17 +44,28 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast)
+plugins=(gitfast zsh-syntax-highlighting)
 
 # User configuration
 
 export PATH="$HOME/.bin:$HOME/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/Users/matt/Code/go/bin:$PATH"  # Go binaries onto path
 export PATH="$HOME/.cargo/bin:$PATH"         # Rust binaries onto path
-export PATH="/usr/local/sbin:$PATH"          # Homebrew binaries onto path
-export PATH="/Users/matt/.local/share/solana/install/active_release/bin:$PATH"  # solana tools
+export PATH="/opt/homebrew/bin:$PATH"          # Homebrew binaries onto path
+export PATH="/opt/homebrew/sbin:$PATH"          # Homebrew binaries onto path
+#export PATH="/Users/matt/.local/share/solana/install/active_release/bin:$PATH"  # solana tools
 
 export GOPATH=~/Code/go
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,3 +109,14 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 printcert() {
   echo | openssl s_client -connect $1 2>/dev/null | openssl x509 -text
 }
+printcertsni() {
+  echo | openssl s_client -showcerts -servername $1 -connect $1:443 2>/dev/null | openssl x509 -text
+}
+
+eval "$(starship init zsh)"
+
+source <(kubectl completion zsh)
+
+source ~/.work_alias.sh
+
+alias ag="rg"
